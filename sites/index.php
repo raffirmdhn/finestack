@@ -126,7 +126,7 @@ if (isset($_GET['q'])) {
 
         <div class="opt">
             <p>
-                <a href="https://github.com/raffirmdhn/finestack" target="_blank" rel="noopener">
+                <a href="https://github.com/raffirmdhn/finestack/blob/main/README.md" target="_blank" rel="noopener">
                     Getting Started
                 </a>
             </p>
