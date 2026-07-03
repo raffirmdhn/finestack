@@ -80,13 +80,13 @@ Restart terminal after adding to PATH.
 ## Step 5: Start Services
 
 ```cmd
-dev start
+fine start
 ```
 
 ## Step 6: Verify
 
 ```cmd
-dev status
+fine status
 php -v
 mysql -u root -e "SELECT VERSION();"
 ```

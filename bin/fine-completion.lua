@@ -42,8 +42,8 @@ local function get_db_types()
     return types
 end
 
--- Create argmatcher for 'dev' command
-clink.argmatcher("dev")
+-- Create argmatcher for 'fine' command
+clink.argmatcher("fine")
     :addarg({
         "start" .. clink.argmatcher():addarg({"all", "nginx", "php", "mysql"}),
         "stop" .. clink.argmatcher():addarg({"all", "nginx", "php", "mysql"}),

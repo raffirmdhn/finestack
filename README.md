@@ -9,7 +9,7 @@ Lightweight, portable development environment for Windows - A complete Laragon r
 - **Database**: MySQL with configurable versions
 - **Package Manager**: Composer integration
 - **Symlink-based**: Instant version switching without file copying
-- **CLI Tool**: Simple `dev` command for all operations
+- **CLI Tool**: Simple `fine` command for all operations
 - **Tab Completion**: PowerShell and cmd/cmder support
 - **Portable**: No installation, no system modifications (except PATH)
 
@@ -38,7 +38,7 @@ powershell -ExecutionPolicy Bypass -File setup.ps1
 powershell -ExecutionPolicy Bypass -File bin\add-to-path.ps1
 
 # 5. Restart terminal, then start services
-dev start
+fine start
 ```
 
 **📖 See [SETUP_GUIDE.md](SETUP_GUIDE.md) for detailed setup instructions and troubleshooting.**
@@ -51,16 +51,16 @@ dev start
 
 ```cmd
 # Start all services
-dev start
+fine start
 
 # Check status
-dev status
+fine status
 
 # Open http://localhost in browser
 # Default site at sites/default/
 
 # Stop services
-dev stop
+fine stop
 ```
 
 ## Folder Structure
@@ -73,8 +73,8 @@ FineStack/
 │   ├── mysql/      # MySQL versions
 │   └── composer/   # Composer
 ├── bin/            # CLI scripts
-│   ├── dev.cmd     # Main CLI entry point
-│   ├── dev.ps1     # PowerShell implementation
+│   ├── fine.cmd    # Main CLI entry point
+│   ├── fine.ps1    # PowerShell implementation
 │   └── *.ps1       # Helper scripts
 ├── config/         # Configuration files
 │   ├── php/        # php.ini
@@ -100,40 +100,40 @@ FineStack/
 
 ```cmd
 # Start all services (nginx, PHP-CGI, MySQL)
-dev start
+fine start
 
 # Stop all services
-dev stop
+fine stop
 
 # Restart all services
-dev restart
+fine restart
 
 # Restart specific service
-dev restart nginx
-dev restart php
-dev restart mysql
+fine restart nginx
+fine restart php
+fine restart mysql
 
 # Check service status
-dev status
+fine status
 ```
 
 ### Version Management
 
 ```cmd
 # List available PHP versions
-dev list php
+fine list php
 
 # List available MySQL versions
-dev list mysql
+fine list mysql
 
 # List all versions
-dev list all
+fine list all
 
 # Switch PHP version (requires admin)
-dev use php 8.1.32
+fine use php 8.1.32
 
 # Switch database version (requires admin)
-dev use db mysql
+fine use db mysql
 ```
 
 ### Service Status Output
@@ -164,7 +164,7 @@ FineStack uses **symlinks** for instant version switching:
 # Extract to C:\Users\Raffi\Programs\FineStack\apps\php\8.3.0
 
 # Switch to new version
-dev use php 8.3.0
+fine use php 8.3.0
 
 # Verify
 php -v
@@ -196,12 +196,12 @@ php -v
 
 3. **Switch to new version**
    ```cmd
-   dev use php 8.3.0
+   fine use php 8.3.0
    ```
 
 4. **Restart PHP-CGI**
    ```cmd
-   dev restart php
+   fine restart php
    ```
 
 **The shared `config/php/php.ini` applies to all PHP versions.**
@@ -253,7 +253,7 @@ FineStack uses nginx with site-based configuration.
 
 4. **Reload nginx**
    ```cmd
-   dev restart nginx
+   fine restart nginx
    ```
 
 5. **Open in browser**
@@ -304,11 +304,11 @@ max_connections = 100
 Already configured if you have cmder with Clink:
 
 ```cmd
-# File: bin\dev-completion.lua (already installed)
+# File: bin\fine-completion.lua (already installed)
 
 # Test:
-dev [TAB]           # Shows: start, stop, status, list, use
-dev use php [TAB]   # Shows: 8.1.32, 8.2.28
+fine [TAB]           # Shows: start, stop, status, list, use
+fine use php [TAB]   # Shows: 8.1.32, 8.2.28
 ```
 
 ### For PowerShell (optional)

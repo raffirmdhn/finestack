@@ -78,21 +78,22 @@ function Show-Help {
     Write-Host "FineStack Development Environment CLI" -ForegroundColor Cyan
     Write-Host ""
     Write-Host "Usage:"
-    Write-Host "  dev start [all|nginx|php|mysql]   - Start services"
-    Write-Host "  dev stop [all|nginx|php|mysql]    - Stop services"
-    Write-Host "  dev restart [all|nginx|php|mysql] - Restart services"
-    Write-Host "  dev status                         - Check service status"
-    Write-Host "  dev use php <version>              - Switch PHP version (e.g., 8.1.32)"
-    Write-Host "  dev list [php|mysql|all]           - List available versions"
-    Write-Host "  dev use php <version>              - Switch PHP version (e.g., 8.1.32)"
-    Write-Host "  dev use db <type>                  - Switch database (e.g., mysql)"
+    Write-Host "  fine start [all|nginx|php|mysql]   - Start services"
+    Write-Host "  fine stop [all|nginx|php|mysql]    - Stop services"
+    Write-Host "  fine restart [all|nginx|php|mysql] - Restart services"
+    Write-Host "  fine status                         - Check service status"
+    Write-Host "  fine use php <version>              - Switch PHP version (e.g., 8.1.32)"
+    Write-Host "  fine list [php|mysql|all]           - List available versions"
+    Write-Host "  fine use php <version>              - Switch PHP version (e.g., 8.1.32)"
+    Write-Host "  fine use db <type>                  - Switch database (e.g., mysql)"
     Write-Host ""
     Write-Host "Examples:"
-    Write-Host "  dev start all"
-    Write-Host "  dev stop nginx"
-    Write-Host "  dev restart nginx"
-    Write-Host "  dev list php1.32"
-    Write-Host "  dev status"
+    Write-Host "  fine start all"
+    Write-Host "  fine stop nginx"
+    Write-Host "  fine restart nginx"
+    Write-Host "  fine list php"
+    Write-Host "  fine use php 8.1.32"
+    Write-Host "  fine status"
 }
 
 if (-not $Command) {
@@ -119,7 +120,7 @@ switch ($Command.ToLower()) {
     "use" {
         if (-not $Target) {
             Write-Host "Error: Please specify what to switch (php or db)" -ForegroundColor Red
-            Write-Host "Usage: dev use [php|db] <version>"
+            Write-Host "Usage: fine use [php|db] <version>"
             exit 1
         }
         
@@ -127,8 +128,8 @@ switch ($Command.ToLower()) {
             "php" {
                 if (-not $Value) {
                     Write-Host "Error: Please specify PHP version" -ForegroundColor Red
-                    Write-Host "Usage: dev use php <version>"
-                    Write-Host "Example: dev use php 8.2.28"
+                    Write-Host "Usage: fine use php <version>"
+                    Write-Host "Example: fine use php 8.2.28"
                     exit 1
                 }
                 & "$ScriptDir\use-php.ps1" -Version $Value
@@ -136,15 +137,15 @@ switch ($Command.ToLower()) {
             "db" {
                 if (-not $Value) {
                     Write-Host "Error: Please specify database type" -ForegroundColor Red
-                    Write-Host "Usage: dev use db <type>"
-                    Write-Host "Example: dev use db mysql"
+                    Write-Host "Usage: fine use db <type>"
+                    Write-Host "Example: fine use db mysql"
                     exit 1
                 }
                 & "$ScriptDir\use-db.ps1" -Database $Value
             }
             default {
                 Write-Host "Error: Invalid target '$Target'" -ForegroundColor Red
-                Write-Host "Usage: dev use [php|db] <version>"
+                Write-Host "Usage: fine use [php|db] <version>"
                 exit 1
             }
         }
