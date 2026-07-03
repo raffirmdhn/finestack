@@ -18,9 +18,6 @@ backups/
 
 # Sites (optional - uncomment if you want to exclude)
 sites/*/
-# Keep only structure:
-!sites/default/
-# !sites/default/.gitkeep
 
 # Temporary files
 *.tmp
