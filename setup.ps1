@@ -31,7 +31,10 @@ if (Test-Path "$RootDir\apps\php") {
 
 # Create directories
 Write-Host "[*] Creating directories..." -ForegroundColor Cyan
-$dirs = @("data\mysql", "logs\nginx", "logs\mysql", "sites\default", "current", "backups")
+$dirs = @(
+    "data\mysql", "logs\nginx", "logs\mysql", "sites\default", "current", "backups",
+    "temp", "temp\client_body_temp", "temp\proxy_temp", "temp\fastcgi_temp", "temp\uwsgi_temp", "temp\scgi_temp"
+)
 foreach ($dir in $dirs) {
     $path = Join-Path $RootDir $dir
     if (-not (Test-Path $path)) {
@@ -104,6 +107,25 @@ if ($composerVersion) {
     }
     cmd /c mklink /D $composerSymlink "$RootDir\apps\composer\$composerVersion" >$null
     Write-Host "  Composer: $composerVersion" -ForegroundColor Green
+}
+
+# Copy nginx config files
+Write-Host ""
+Write-Host "[*] Copying nginx config files..." -ForegroundColor Cyan
+$nginxConfigFiles = @("fastcgi_params", "mime.types")
+foreach ($file in $nginxConfigFiles) {
+    $source = "$RootDir\current\nginx\conf\$file"
+    $dest = "$RootDir\config\nginx\$file"
+    if (Test-Path $source) {
+        if (-not (Test-Path $dest)) {
+            Copy-Item $source $dest
+            Write-Host "  Copied: $file" -ForegroundColor Gray
+        } else {
+            Write-Host "  Already exists: $file" -ForegroundColor Gray
+        }
+    } else {
+        Write-Host "  [!] Source not found: $file" -ForegroundColor Yellow
+    }
 }
 
 # Initialize MySQL data directory

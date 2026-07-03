@@ -42,3 +42,5 @@ $RECYCLE.BIN/
 # Custom exclusions
 config_backup*/
 laragon_backup*
+temp/* 
+!temp/.gitkeep 
