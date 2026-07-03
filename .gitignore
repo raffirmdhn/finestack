@@ -1,0 +1,44 @@
+# FineStack .gitignore
+
+# Binaries (download separately)
+apps/
+
+# Symlinks (OS-specific, recreate on setup)
+current/
+
+# Data & Logs (personal, generated)
+data/
+logs/
+
+# Backups
+backups/
+*.zip
+*.sql
+*.bak
+
+# Sites (optional - uncomment if you want to exclude)
+# sites/*/
+# Keep only structure:
+sites/default/
+!sites/default/.gitkeep
+
+# Temporary files
+*.tmp
+*.log
+*.swp
+*.swo
+*~
+
+# Windows
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Editor
+.vscode/
+.idea/
+*.code-workspace
+
+# Custom exclusions
+config_backup*/
+laragon_backup*
