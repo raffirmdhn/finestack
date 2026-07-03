@@ -13,7 +13,41 @@ Lightweight, portable development environment for Windows - A complete Laragon r
 - **Tab Completion**: PowerShell and cmd/cmder support
 - **Portable**: No installation, no system modifications (except PATH)
 
+## Installation
+
+### Cloning from GitHub
+
+**For first-time setup after cloning:**
+
+```bash
+# 1. Clone repository
+git clone https://github.com/yourusername/finestack.git
+cd finestack
+
+# 2. Download binaries (not included in repo)
+# - PHP NTS x64: https://windows.php.net/download/
+# - nginx: https://nginx.org/en/download.html
+# - MySQL: https://dev.mysql.com/downloads/mysql/
+# - Composer: https://getcomposer.org/download/
+# Extract to: apps/php/, apps/nginx/, apps/mysql/, apps/composer/
+
+# 3. Run setup script (as Administrator)
+powershell -ExecutionPolicy Bypass -File setup.ps1
+
+# 4. Add to PATH (as Administrator)
+powershell -ExecutionPolicy Bypass -File bin\add-to-path.ps1
+
+# 5. Restart terminal, then start services
+dev start
+```
+
+**📖 See [SETUP_GUIDE.md](SETUP_GUIDE.md) for detailed setup instructions and troubleshooting.**
+
+---
+
 ## Quick Start
+
+**For existing installations:**
 
 ```cmd
 # Start all services
