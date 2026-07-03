@@ -44,3 +44,6 @@ config_backup*/
 laragon_backup*
 temp/* 
 !temp/.gitkeep 
+
+.vscode
+ai
