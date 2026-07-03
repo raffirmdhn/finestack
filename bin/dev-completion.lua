@@ -46,7 +46,8 @@ end
 clink.argmatcher("dev")
     :addarg({
         "start" .. clink.argmatcher():addarg({"all", "nginx", "php", "mysql"}),
-        "stop",
+        "stop" .. clink.argmatcher():addarg({"all", "nginx", "php", "mysql"}),
+        "restart" .. clink.argmatcher():addarg({"all", "nginx", "php", "mysql"}),
         "status",
         "list" .. clink.argmatcher():addarg({"php", "mysql", "all"}),
         "use" .. clink.argmatcher():addarg({

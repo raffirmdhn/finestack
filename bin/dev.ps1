@@ -78,17 +78,19 @@ function Show-Help {
     Write-Host "FineStack Development Environment CLI" -ForegroundColor Cyan
     Write-Host ""
     Write-Host "Usage:"
-    Write-Host "  dev start [all|nginx|php|mysql]  - Start services"
-    Write-Host "  dev stop [all|nginx|php|mysql]   - Stop services"
-    Write-Host "  dev status                        - Check service status"
-    Write-Host "  dev use php <version>             - Switch PHP version (e.g., 8.1.32)"
-    Write-Host "  dev list [php|mysql|all]          - List available versions"
-    Write-Host "  dev use php <version>             - Switch PHP version (e.g., 8.1.32)"
-    Write-Host "  dev use db <type>                 - Switch database (e.g., mysql)"
+    Write-Host "  dev start [all|nginx|php|mysql]   - Start services"
+    Write-Host "  dev stop [all|nginx|php|mysql]    - Stop services"
+    Write-Host "  dev restart [all|nginx|php|mysql] - Restart services"
+    Write-Host "  dev status                         - Check service status"
+    Write-Host "  dev use php <version>              - Switch PHP version (e.g., 8.1.32)"
+    Write-Host "  dev list [php|mysql|all]           - List available versions"
+    Write-Host "  dev use php <version>              - Switch PHP version (e.g., 8.1.32)"
+    Write-Host "  dev use db <type>                  - Switch database (e.g., mysql)"
     Write-Host ""
     Write-Host "Examples:"
     Write-Host "  dev start all"
     Write-Host "  dev stop nginx"
+    Write-Host "  dev restart nginx"
     Write-Host "  dev list php1.32"
     Write-Host "  dev status"
 }
@@ -104,6 +106,9 @@ switch ($Command.ToLower()) {
     }
     "stop" {
         & "$ScriptDir\stop-services.ps1" -Service $Target
+    }
+    "restart" {
+        & "$ScriptDir\restart-services.ps1" -Service $Target
     }
     "status" {
         & "$ScriptDir\status.ps1"

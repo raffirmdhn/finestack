@@ -105,6 +105,14 @@ dev start
 # Stop all services
 dev stop
 
+# Restart all services
+dev restart
+
+# Restart specific service
+dev restart nginx
+dev restart php
+dev restart mysql
+
 # Check service status
 dev status
 ```
@@ -193,8 +201,7 @@ php -v
 
 4. **Restart PHP-CGI**
    ```cmd
-   dev stop
-   dev start
+   dev restart php
    ```
 
 **The shared `config/php/php.ini` applies to all PHP versions.**
@@ -246,8 +253,7 @@ FineStack uses nginx with site-based configuration.
 
 4. **Reload nginx**
    ```cmd
-   dev stop
-   dev start
+   dev restart nginx
    ```
 
 5. **Open in browser**
