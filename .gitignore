@@ -17,10 +17,10 @@ backups/
 *.bak
 
 # Sites (optional - uncomment if you want to exclude)
-# sites/*/
+sites/*/
 # Keep only structure:
-sites/default/
-!sites/default/.gitkeep
+!sites/default/
+# !sites/default/.gitkeep
 
 # Temporary files
 *.tmp
